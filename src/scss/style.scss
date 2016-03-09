@@ -1,0 +1,15 @@
+$color-red: #ff0000;
+$color-blue: #0000ff;
+
+$font-arial: Arial;
+
+body {
+	h1 {
+		color: $color-blue;
+		font-family: $font-arial;
+	}
+	
+	p {
+		color: $color-red;
+	}
+}
