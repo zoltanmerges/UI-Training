@@ -6,8 +6,13 @@ var gulp = require('gulp'),
 
 
 gulp.task('copy', function() {
-  gulp.src('bower_components/angular/angular**.js')
-    .pipe(gulp.dest('assets/js/libs'));
+	gulp.src('bower_components/angular/angular**.js').pipe(gulp.dest('assets/js/libs'));
+	gulp.src('bower_components/jquery/dist/**.js').pipe(gulp.dest('assets/js/libs/jquery'));
+	gulp.src('bower_components/jquery/dist/**.map').pipe(gulp.dest('assets/js/libs/jquery'));
+});
+
+gulp.task('js-copy', function() {
+	gulp.src('src/js/*.js').pipe(gulp.dest('assets/js/'));
 });
 
 gulp.task('sass', function () {
@@ -26,7 +31,14 @@ gulp.task('watch', function() {
 	watch('src/scss/*.scss', function(files) {
 		gulp.run('sass', function() {
 			console.log('scss compiled');
-			//bs.reload();
+			bs.reload();
+		});
+	});
+	
+	watch('src/js/*.js', function(files) {
+		gulp.run('js-copy', function() {
+			console.log('js file changed');
+			bs.reload();
 		});
 	});
 });
@@ -38,6 +50,7 @@ gulp.task('server', function() {
     });
 	
 	gulp.run('copy');
+	gulp.run('js-copy');
 	gulp.run('sass');
 	gulp.run('watch');
 });

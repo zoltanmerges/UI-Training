@@ -1,8 +1,9 @@
 {
-  "name": "website.ryanair.com",
+  "name": "epam.ui.training",
   "version": "0.0.0",
   "dependencies": {
     "angular": "~1.4.x",
-    "bootstrap": "3.3.2"
+    "bootstrap": "3.3.2",
+	"jquery": "*"
   }
 }

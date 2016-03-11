@@ -1,6 +1,36 @@
-body h1 {
-  color: #0000ff;
+body {
+  margin: 0;
+  padding: 0;
+  background: silver;
   font-family: Arial; }
+  body h1 {
+    color: #0000ff; }
+  body p {
+    color: #ff0000; }
 
-body p {
-  color: #ff0000; }
+.page-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+.content {
+  max-width: 800px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 5px; }
+  .content .form-wrapper .form-element {
+    margin-top: 10px; }
+    .content .form-wrapper .form-element.text {
+      width: 98%;
+      display: inline-block;
+      padding: 7px 5px;
+      border: 1px solid #e6e8e6; }
+    .content .form-wrapper .form-element.button {
+      padding: 10px 20px;
+      background: #7c9824;
+      color: #ffffff;
+      border: 1px solid #90d49c;
+      cursor: pointer;
+      border-radius: 3px; }
