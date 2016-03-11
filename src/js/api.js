@@ -31,7 +31,7 @@ function userRegistration() {
 }
 
 function userLogin() {
-		username = $('#login-username').val(),
+	var	username = $('#login-username').val(),
 		password = $('#login-password').val(),
 		apiEndpoint = apiUrl + 'LoginAuth';;
 	
