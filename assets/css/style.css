@@ -3,8 +3,8 @@ body {
   padding: 0;
   background: silver;
   font-family: Arial; }
-  body h1 {
-    color: #0000ff; }
+  body h1, body h2, body h3 {
+    margin: 0; }
   body p {
     color: #ff0000; }
 
@@ -20,17 +20,42 @@ body {
   background: #ffffff;
   padding: 10px;
   border-radius: 5px; }
-  .content .form-wrapper .form-element {
-    margin-top: 10px; }
-    .content .form-wrapper .form-element.text {
-      width: 98%;
-      display: inline-block;
-      padding: 7px 5px;
-      border: 1px solid #e6e8e6; }
-    .content .form-wrapper .form-element.button {
-      padding: 10px 20px;
-      background: #7c9824;
-      color: #ffffff;
-      border: 1px solid #90d49c;
-      cursor: pointer;
-      border-radius: 3px; }
+  .content .main-menu {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 15px; }
+    .content .main-menu ul {
+      padding-left: 0; }
+      .content .main-menu ul .menu-item {
+        list-style: none;
+        background: #1BBCF2;
+        float: left;
+        padding: 7px;
+        margin-right: 10px; }
+      .content .main-menu ul .menu-link {
+        color: #ffffff;
+        text-decoration: none; }
+        .content .main-menu ul .menu-link.active {
+          color: #F2EF1B; }
+        .content .main-menu ul .menu-link:hover {
+          color: #F2EF1B; }
+  .content .content-section {
+    display: none; }
+    .content .content-section .form-element {
+      margin-top: 10px; }
+      .content .content-section .form-element.text {
+        width: 98%;
+        display: inline-block;
+        padding: 7px 5px;
+        border: 1px solid #e6e8e6; }
+      .content .content-section .form-element.button {
+        padding: 10px 20px;
+        background: #7c9824;
+        color: #ffffff;
+        border: 1px solid #90d49c;
+        cursor: pointer;
+        border-radius: 3px; }
+    .content .content-section.visible {
+      display: block; }
+  .content .hidden {
+    display: none; }

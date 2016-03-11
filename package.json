@@ -10,6 +10,7 @@
     "gulp-livereload": "^3.8.1",
 	"gulp-sass": "*",
 	"gulp-concat": "*",
+	"gulp-sourcemaps": "*",
 	"browser-sync": "*",
     "gulp-watch": "^4.3.5",
     "karma": "^0.13.15",

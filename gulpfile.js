@@ -2,7 +2,8 @@ var gulp = require('gulp'),
 	watch = require('gulp-watch'),
 	bs = require('browser-sync').create(),
 	sass = require('gulp-sass'),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+	sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task('copy', function() {
@@ -11,8 +12,11 @@ gulp.task('copy', function() {
 	gulp.src('bower_components/jquery/dist/**.map').pipe(gulp.dest('assets/js/libs/jquery'));
 });
 
-gulp.task('js-copy', function() {
-	gulp.src('src/js/*.js').pipe(gulp.dest('assets/js/'));
+gulp.task('js-concat', function() {
+	return gulp.src('src/js/*.js')
+		.pipe(concat({ path: 'app.js', stat: { mode: 0666 }}))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('assets/js'));
 });
 
 gulp.task('sass', function () {
@@ -36,8 +40,8 @@ gulp.task('watch', function() {
 	});
 	
 	watch('src/js/*.js', function(files) {
-		gulp.run('js-copy', function() {
-			console.log('js file changed');
+		gulp.run('js-concat', function(){
+			console.log('js compiled');
 			bs.reload();
 		});
 	});
@@ -50,7 +54,7 @@ gulp.task('server', function() {
     });
 	
 	gulp.run('copy');
-	gulp.run('js-copy');
+	gulp.run('js-concat');
 	gulp.run('sass');
 	gulp.run('watch');
 });

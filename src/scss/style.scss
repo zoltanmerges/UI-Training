@@ -5,6 +5,8 @@ $color-white: #ffffff;
 $color-green: #7c9824;
 $color-lightgreen: #90d49c;
 $color-lightgrey: #e6e8e6;
+$color-lightblue: #1BBCF2;
+$color-yellow: #F2EF1B;
 
 $font-arial: Arial;
 
@@ -14,8 +16,8 @@ body {
 	background: $color-silver;
 	font-family: $font-arial;
 	
-	h1 {
-		color: $color-blue;
+	h1, h2, h3 {
+		margin: 0;
 	}
 	
 	p {
@@ -37,7 +39,40 @@ body {
 	padding: 10px;
 	border-radius: 5px;
 	
-	.form-wrapper {
+	.main-menu {
+		width: 100%;
+		display: inline-block;
+		margin-bottom: 15px;
+
+		ul {
+			padding-left: 0;
+			
+			.menu-item {
+				list-style: none;
+				background: $color-lightblue;
+				float: left;
+				padding: 7px;
+				margin-right: 10px;
+			}
+			
+			.menu-link {
+				color: $color-white;
+				text-decoration: none;
+				
+				&.active {
+					color: $color-yellow;
+				}
+				
+				&:hover {
+					color: $color-yellow;
+				}
+			}
+		}
+	}
+	
+	.content-section {
+		display: none;
+
 		.form-element {
 			margin-top: 10px;
 			
@@ -57,5 +92,13 @@ body {
 				border-radius: 3px;
 			}
 		}
+
+		&.visible {
+			display: block;
+		}
+	}
+	
+	.hidden {
+		display: none;
 	}
 }
