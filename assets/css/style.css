@@ -39,23 +39,37 @@ body {
           color: #F2EF1B; }
         .content .main-menu ul .menu-link:hover {
           color: #F2EF1B; }
-  .content .content-section {
-    display: none; }
-    .content .content-section .form-element {
-      margin-top: 10px; }
-      .content .content-section .form-element.text {
-        width: 98%;
-        display: inline-block;
-        padding: 7px 5px;
-        border: 1px solid #e6e8e6; }
-      .content .content-section .form-element.button {
-        padding: 10px 20px;
-        background: #7c9824;
-        color: #ffffff;
-        border: 1px solid #90d49c;
-        cursor: pointer;
-        border-radius: 3px; }
-    .content .content-section.visible {
-      display: block; }
+  .content .content-section .form-element {
+    margin-top: 10px; }
+    .content .content-section .form-element.text {
+      width: 98%;
+      display: inline-block;
+      padding: 7px 5px;
+      border: 1px solid #e6e8e6; }
+    .content .content-section .form-element.button {
+      padding: 10px 20px;
+      background: #7c9824;
+      color: #ffffff;
+      border: 1px solid #90d49c;
+      cursor: pointer;
+      border-radius: 3px; }
+    .content .content-section .form-element.textarea {
+      width: 98.8%;
+      height: 100px;
+      border: 1px solid #e6e8e6; }
+  .content .content-section.visible {
+    display: block; }
+  .content .content-section .article {
+    width: 97%;
+    display: inline-block;
+    margin: 10px auto;
+    background: #efefef;
+    padding: 10px; }
+    .content .content-section .article .article-header {
+      font-size: 18px;
+      color: #1BBCF2;
+      margin-bottom: 10px; }
+    .content .content-section .article .article-content {
+      font-size: 15px; }
   .content .hidden {
     display: none; }

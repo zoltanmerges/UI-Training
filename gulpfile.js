@@ -27,7 +27,7 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function() {
 	
-	watch('*.html', function(files) {
+	watch(['*.html', 'assets/templates/*.html'], function(files) {
 		console.log('file changed');
 		bs.reload();
 	});
