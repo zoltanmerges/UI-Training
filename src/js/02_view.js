@@ -19,18 +19,26 @@ $jq(document).on('click', '.menu-link', function() {
 });
 
 view.setContentList = function() {
-	var contentListHtml = '';
-
-	$jq.when(api.getContentList()).then(function(response){
-		response = JSON.parse(response);
-		$jq.each(response, function(index, value){
-			contentListHtml += '<article class="article">' +
-				'<h3 class="article-header">' + value.post_title + '</h3>' +
-				'<div class="article-content">' + value.post_content + '</div>' +
-			'</article>';
+	var contentListHtml = '',
+		contentListObj = api.getContentList(),
+		contentListTemplate = $jq.get('assets/templates/article.html', function(response) {
+		    return response;
 		});
-		
-		console.log(contentListHtml);
+
+	$jq.when(contentListObj, contentListTemplate).then(function(contentObj, contentTemplate){
+		var article = '';
+
+		contentObj = JSON.parse(contentObj[0]);
+		contentTemplate = contentTemplate[0];
+
+		$jq.each(contentObj, function(index, value){
+			article = contentTemplate;
+			article = article.replace('{{article_header}}', value.post_title);
+			article = article.replace('{{article_content}}', value.post_content);
+
+			contentListHtml += article;
+		});
+
 		$jq('#main-content-section').html(contentListHtml);
 		$jq('#main-content-section').addClass('visible');
 	});
