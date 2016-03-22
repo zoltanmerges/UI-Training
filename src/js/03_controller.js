@@ -16,6 +16,14 @@ $jq(document).on('click', '.add-action', function() {
 	switch (sectionId) {
 		case 'registration': api.userRegistration(); break;
 		case 'login': api.userLogin(); break;
-		case 'create-content': api.createContent(); break;
+		case 'create-content': createContent(); break;
+	}
+
+	function createContent() {
+		var createContentResult = api.createContent();
+
+		$jq.when(createContentResult).then(function(result){
+			view.createArticle(result);
+		});
 	}
 });

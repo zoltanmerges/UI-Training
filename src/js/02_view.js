@@ -56,6 +56,24 @@ view.setCreateContentView = function() {
 	$jq('#content-header-section').load('assets/templates/create-content.html');
 }
 
+view.createArticle = function(contentDetails) {
+	var articleTemplate = $jq.get('assets/templates/article.html', function(response) {
+	    return response;
+	});
+
+	contentDetails = JSON.parse(contentDetails);
+
+	$jq.when(articleTemplate).then(function(template){
+		template = template.replace('{{article_header}}', contentDetails.content_title);
+		template = template.replace('{{article_content}}', contentDetails.content_description);
+
+		$jq('#create-content-title').val('');
+		$jq('#create-content-description').val('');
+
+		$jq('#main-content-section').prepend(template);
+	});
+}
+
 view.setMainMenuView = function(menuType) {
 	$jq('#main-menu-container').load('assets/templates/main-menu-' + menuType + '.html');
 }

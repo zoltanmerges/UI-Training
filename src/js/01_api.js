@@ -92,8 +92,8 @@ api.createContent = function() {
 		token = api.getTokenIdFromCookie;
 	
 	if(title.length > 0 && content.length > 0) {
-		$jq.ajax({
-			url: apiHost,
+		return $jq.ajax({
+			url: apiEndpoint,
 			type: 'post',
 			data: {CreateContent: true, title: title, content: content, token: token},
 			success: function(response){

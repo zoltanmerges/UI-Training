@@ -92,8 +92,8 @@ api.createContent = function() {
 		token = api.getTokenIdFromCookie;
 	
 	if(title.length > 0 && content.length > 0) {
-		$jq.ajax({
-			url: apiHost,
+		return $jq.ajax({
+			url: apiEndpoint,
 			type: 'post',
 			data: {CreateContent: true, title: title, content: content, token: token},
 			success: function(response){
@@ -161,6 +161,24 @@ view.setCreateContentView = function() {
 	$jq('#content-header-section').load('assets/templates/create-content.html');
 }
 
+view.createArticle = function(contentDetails) {
+	var articleTemplate = $jq.get('assets/templates/article.html', function(response) {
+	    return response;
+	});
+
+	contentDetails = JSON.parse(contentDetails);
+
+	$jq.when(articleTemplate).then(function(template){
+		template = template.replace('{{article_header}}', contentDetails.content_title);
+		template = template.replace('{{article_content}}', contentDetails.content_description);
+
+		$jq('#create-content-title').val('');
+		$jq('#create-content-description').val('');
+
+		$jq('#main-content-section').prepend(template);
+	});
+}
+
 view.setMainMenuView = function(menuType) {
 	$jq('#main-menu-container').load('assets/templates/main-menu-' + menuType + '.html');
 }
@@ -192,6 +210,14 @@ $jq(document).on('click', '.add-action', function() {
 	switch (sectionId) {
 		case 'registration': api.userRegistration(); break;
 		case 'login': api.userLogin(); break;
-		case 'create-content': api.createContent(); break;
+		case 'create-content': createContent(); break;
+	}
+
+	function createContent() {
+		var createContentResult = api.createContent();
+
+		$jq.when(createContentResult).then(function(result){
+			view.createArticle(result);
+		});
 	}
 });
